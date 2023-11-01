@@ -46,6 +46,12 @@
 
     &__content {
         margin-top: 60px;
+        display: none;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        &_active {
+            display: flex;
+        }
     }
 
     &-item {
@@ -54,6 +60,7 @@
         border: 2px solid #E8E8E8;
         padding: 20px 20px 26px 20px;
         overflow: hidden;
+        margin-bottom: 20px;
 
         &__img {
             display: block;
@@ -86,6 +93,11 @@
             font-size: 14px;
             font-weight: 500;
             text-decoration-line: underline;
+            text-transform: uppercase;
+
+            &:hover {
+                color: $main-color;
+            }
 
             &:hover {
                 color: $main-color;
@@ -159,6 +171,8 @@
                 font-weight: 300;
                 line-height: 21px;
                 margin-bottom: 20px;
+
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -168,6 +182,24 @@
                     left: -14px;
                     top: 8px;
                 }
+            }
+        }
+
+        &__back {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            color: $main-color;
+            transform: translateX(calc(-50% - 19px));
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 14px;
+            text-decoration: underline;
+            text-transform: uppercase;
+
+            &:hover {
+                color: $main-color;
             }
         }
     }
