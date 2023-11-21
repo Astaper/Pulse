@@ -77,7 +77,7 @@ $(document).ready(function () {
     })
   });
 
-  
+
 
   function valideForms(form) {
     $(form).validate({
@@ -111,5 +111,74 @@ $(document).ready(function () {
   valideForms('#consultation form');
   valideForms('#order form');
 
+  $('input[name=phone]').mask("+7 (999) 999-99-99");
+
+  $('form').submit(function (e) {
+    e.preventDefault();
+
+    if (!$(this).valid()) {
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "https://simple-server-cumz.onrender.com/api/data",
+      data: $(this).serialize()
+    }).done(function () {
+      $(this).find("input").val("");
+      $('#consultation, #order').fadeOut();
+      $('.overlay, #thanks').fadeIn('slow');
+
+      $('form').trigger('reset');
+    })
+    return false;
+  });
+
+
+
+
+})
+
+const formEl = document.querySelector('.feed-form');
+
+formEl.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const formData = new FormData(formEl);
+  const data = Object.fromEntries(formData);
+
+  fetch('https://simple-server-cumz.onrender.com/api/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(data => console.log(data))
+    .then(response => response.json())
+    .catch(error => console.log('ERROR'));
+})
+
+
+
+
+
+
+//Smooth scroll and pageup
+
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 1600) {
+    $('.pageup').fadeIn();
+  } else {
+    $('.pageup').fadeOut();
+  }
+
+  $("a[href^='#']").click(function () {
+    const _href = $(this).attr("href");
+    $("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
+    return false;
+  });
 
 });
+
+
