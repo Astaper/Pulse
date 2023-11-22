@@ -1,5 +1,6 @@
 @import 'base/variables';
 
+
 * {
     font-family: 'Museo Sans Cyrl', sans-serif;
 }
@@ -21,4 +22,5 @@
 @import 'blocks/reviews';
 @import 'blocks/footer';
 @import 'blocks/modal';
-@import 'blocks/pageup'
+@import 'blocks/pageup';
+@import 'base/anamation';

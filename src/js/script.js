@@ -179,6 +179,8 @@ $(window).scroll(function () {
     return false;
   });
 
+  new WOW().init();
+
 });
 
 
